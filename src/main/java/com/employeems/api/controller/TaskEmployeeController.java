@@ -41,13 +41,13 @@ public class TaskEmployeeController {
 		Optional<Employee> optionalC = employeeService.getById(emp_id);
 		
 		if(!optionalC.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Course ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Task ID Given");
 		
 		/* Fetch instructor object from instructorId */
 		Optional<Task> optionalI = taskService.getTaskById(task_id);
 		
 		if(!optionalI.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Instructor ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Employee ID Given");
 		
 		Employee employee = optionalC.get();
 		Task task = optionalI.get();
@@ -57,7 +57,7 @@ public class TaskEmployeeController {
 		taskEmployee.setTask(task);
 		
 		taskEmployeeService.insert(taskEmployee);
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Instructor assigned to course");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Task assigned to Employee");
 
 		
 	}

@@ -22,10 +22,10 @@ public class Task {
 	
 	@ManyToOne
 	private ProductOwner productOwner;
-	@OneToOne
-	private Employee employee;
-	@OneToOne
-	private Manager manager;
+//	@OneToOne
+//	private Employee employee;
+//	@OneToOne
+//	private Manager manager;
 	public int getTask_id() {
 		return task_id;
 	}
@@ -44,36 +44,48 @@ public class Task {
 	public void setTask_category(String task_category) {
 		this.task_category = task_category;
 	}
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-	public Manager getManager() {
-		return manager;
-	}
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
-	public Task(int task_id, String task_name, String task_category, Employee employee, Manager manager) {
-		super();
-		this.task_id = task_id;
-		this.task_name = task_name;
-		this.task_category = task_category;
-		this.employee = employee;
-		this.manager = manager;
-	}
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
+//	public Manager getManager() {
+//		return manager;
+//	}
+//	public void setManager(Manager manager) {
+//		this.manager = manager;
+//	}
+//	public Task(int task_id, String task_name, String task_category, Employee employee, Manager manager) {
+//		super();
+//		this.task_id = task_id;
+//		this.task_name = task_name;
+//		this.task_category = task_category;
+//		this.employee = employee;
+//		this.manager = manager;
+//	}
 	
 	public Task() {
 		super();
 	}
+//	@Override
+//	public String toString() {
+//		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", task_category=" + task_category
+//				+ ", employee=" + employee + ", manager=" + manager + "]";
+//	}
+//	
+	public Task(int task_id, String task_name, String task_category, ProductOwner productOwner) {
+		super();
+		this.task_id = task_id;
+		this.task_name = task_name;
+		this.task_category = task_category;
+		this.productOwner = productOwner;
+	}
 	@Override
 	public String toString() {
 		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", task_category=" + task_category
-				+ ", employee=" + employee + ", manager=" + manager + "]";
+				+ ", productOwner=" + productOwner + "]";
 	}
-	
 	
 	
 }

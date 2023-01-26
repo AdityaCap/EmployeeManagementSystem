@@ -42,13 +42,13 @@ public class TaskManagerController {
 		Optional<Manager> optionalC = managerService.getManagerById(m_id);
 		
 		if(!optionalC.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Course ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Task ID Given");
 		
 		/* Fetch instructor object from instructorId */
 		Optional<Task> optionalI = taskService.getTaskById(task_id);
 		
 		if(!optionalI.isPresent())
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Instructor ID Given");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Manager ID Given");
 		
 		Manager manager = optionalC.get();
 		Task task = optionalI.get();
@@ -58,7 +58,7 @@ public class TaskManagerController {
 		taskManager.setTask(task);
 		
 		taskManagerService.insert(taskManager);
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Instructor assigned to course");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Instructor assigned to Manager");
 
 		
 	}

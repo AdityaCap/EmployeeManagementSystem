@@ -31,6 +31,17 @@ public class TaskService
 		{			
 			taskRepo.deleteById(task_id);			
 		}
+	    
+	    public void postTask(Task task) {
+			// save employee in DB 
+			taskRepo.save(task);
+			
+		}
+	    
+	    public Optional<Task> getTaskById(int task_id) {
+			 
+			return taskRepo.findById(task_id);
+		}
 
 	
 }
