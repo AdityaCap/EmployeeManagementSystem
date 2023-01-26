@@ -36,7 +36,7 @@ public class ManagerController {
 	
 	
 	@PostMapping("add/{eid}/{tid}")
-	public ResponseEntity<String> postManager(@RequestBody Manager manager,@PathVariable("tid") int tid,@PathVariable("eid") int eid
+	public ResponseEntity<String> addEmployeeTicketInManager(@RequestBody Manager manager,@PathVariable("tid") int tid,@PathVariable("eid") int eid
 							) {
 		//Fetch Department Object based on did. 
 	Optional<Employee> optional= employeeService.getById(eid);
@@ -50,8 +50,33 @@ public class ManagerController {
 		//save the employee object
 		managerService.addManager(manager); 
 		
-		return ResponseEntity.status(HttpStatus.OK).body("manager Posted..");
+		return ResponseEntity.status(HttpStatus.OK).body("Manager Posted..");
 	}
+	
+	
+	
+	
+	
+	
+//	@PostMapping("add/{eid}")
+//	public ResponseEntity<String> addEmployeeInManager(@RequestBody Manager manager,@PathVariable("eid") int eid
+//							) {
+//		//Fetch Department Object based on did. 
+//	Optional<Employee> optional= employeeService.getById(eid);
+//	
+//		Employee employee=optional.get();
+//		
+//		//Attach department object to employee
+//		manager.setEmployee(employee);
+//		
+//		
+//		//save the employee object
+//		managerService.addManager(manager); 
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body("Manager Posted..");
+//	}
+	
+	
 	
 	
 	
@@ -63,6 +88,8 @@ public class ManagerController {
             return list;
     }
 	
+	
+	
 	@GetMapping("/one/{id}")
 	public ResponseEntity<Object>getMangerById(@PathVariable("id") int id){
 		Optional<Manager>optional=managerService.getManagerById(id);
@@ -73,14 +100,18 @@ public class ManagerController {
 		Manager manager=optional.get();
 		return ResponseEntity.status(HttpStatus.OK).body(manager);
 	}
+	
+	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteManager(@PathVariable("id") int id) {
 	   managerService.deleteEmployeeById(id);
 	   return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Manager Deleted");
 	}
 
+	
+	
 	@PutMapping("/edit/{m_id}")
-	public ResponseEntity<String> editEMployee(@PathVariable("m_id") int m_id, 
+	public ResponseEntity<String> editManager(@PathVariable("m_id") int m_id, 
 							@RequestBody Manager manager) {
 		/* Step 1: check if this id given is valid by fetching the record from DB */
 		Optional<Manager> optional = managerService.getManagerById(m_id);
