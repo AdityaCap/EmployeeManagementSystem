@@ -102,7 +102,7 @@ public class ProductOwnerController {
 
 		/* Save updated employeeDB value in DB */
 		productOwnerService.addProductOwner(productOwnerDB);
-		return ResponseEntity.status(HttpStatus.OK).body("ProductOwner record Edited..");
+		return ResponseEntity.status(HttpStatus.OK).body("ProductOwner record Updated..");
 
 	}
 }
