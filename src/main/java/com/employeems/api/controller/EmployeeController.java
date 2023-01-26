@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.employeems.api.Service.EmployeeService;
 import com.employeems.api.model.Employee;
 
+
 @RestController
 @RequestMapping("/api/employee")
 public class EmployeeController 
 {
 	@Autowired 
     private EmployeeService employeeService;
-	
+
     @GetMapping("/hello")
     public String sayHello() {
         return "hello spring boot";
@@ -44,7 +45,11 @@ public class EmployeeController
     //Get Employees via id
   	//Hence post mapping will be used
   	@PostMapping("/one/{id}")
-  	public ResponseEntity<Object> getEmployeeById(@PathVariable("id") int id)
+
+  	
+
+  	public ResponseEntity<Object> getInstructorById(@PathVariable("id") int id)
+
   	{
   		Optional<Employee> optional =employeeService.getById( id);
   		if(! optional.isPresent())
@@ -60,9 +65,11 @@ public class EmployeeController
   	   employeeService.deleteEmployeeById(id);
   	   System.out.println("Employee Deleted Successfully");      
   	}
+
   	@PutMapping("/update/{eid}")
 	public ResponseEntity<String> editEmployee(@PathVariable("eid") int eid, 
-							@RequestBody Employee employeeNew) {
+							@RequestBody Employee employeeNew) 
+  	{
 		/* Step 1: check if this id given is valid by fetching the record from DB */
 		Optional<Employee> optional = employeeService.getEmployeeById(eid);
 
@@ -94,4 +101,5 @@ public class EmployeeController
 		employeeService.addEmployee(employeeDB);
 		return ResponseEntity.status(HttpStatus.OK).body("Employee record Updated via employee id..");
 	}
+
 }
